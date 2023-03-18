@@ -32,6 +32,7 @@ def graph_from_stair(expensive_stair):
         graph.add_weighted_edges_from([(list_of_nodes[i], list_of_nodes[i+1], expensive_stair[i]),
                                        (list_of_nodes[i], list_of_nodes[i+2], expensive_stair[i+1])
                                        ])
+    """'костыль' для добавления последней связи"""
     graph.add_weighted_edges_from([(list_of_nodes[len(list_of_nodes)-2], list_of_nodes[-1],expensive_stair[-1])])
     return graph
 
