@@ -1,7 +1,7 @@
 from typing import Hashable, List
 from collections import deque
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import networkx as nx
 
 
@@ -46,4 +46,4 @@ if __name__ == '__main__':
     ])
     nx.draw_spring(graph)
     print(bfs(graph, "A"))
-    plt.show()
+    # plt.show()
