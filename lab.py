@@ -1,5 +1,6 @@
 from typing import Hashable, Mapping, Union
 import networkx as nx
+import matplotlib.pyplot as plt
 
 
 def dijkstra_stair(g: set):
@@ -24,11 +25,20 @@ def dijkstra_stair(g: set):
     return total_cost
 
 def graph_from_stair(expensive_stair):
-    pass
-
+    list_of_nodes = [i for i in range(len(expensive_stair)+1)]
+    graph = nx.Graph()
+    graph.add_nodes_from(list_of_nodes)
+    for i in range(len(list_of_nodes)-2):
+        graph.add_weighted_edges_from([(list_of_nodes[i], list_of_nodes[i+1], expensive_stair[i]),
+                                       (list_of_nodes[i], list_of_nodes[i+2], expensive_stair[i+1])
+                                       ])
+    graph.add_weighted_edges_from([(list_of_nodes[len(list_of_nodes)-2],list_of_nodes[-1],expensive_stair[-1])])
+    return graph
 
 
 if __name__ == '__main__':
-    stairway = (5, 11, 43, 2, 23, 43, 22, 12, 6, 8)
+    # stairway = (5, 11, 43, 2, 23, 43, 22, 12, 6, 8)
+    stairway = (5, 11, 43, 2, 23)
     stairway_graph = graph_from_stair(stairway)
-    print(dijkstra_stair(stairway_graph))
+    # # # print(dijkstra_stair(stairway_graph))
+    print(stairway_graph.edges)

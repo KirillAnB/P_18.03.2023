@@ -1,7 +1,7 @@
 from typing import Hashable, List
 from collections import deque
 
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import networkx as nx
 
 
