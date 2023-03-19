@@ -26,7 +26,7 @@ def dijkstra_stair(g):
 
 def graph_from_stair(expensive_stair):
     list_of_nodes = [i for i in range(len(expensive_stair)+1)]
-    graph = nx.Graph()
+    graph = nx.DiGraph()
     graph.add_nodes_from(list_of_nodes)
     for i in range(len(list_of_nodes)-2):
         graph.add_weighted_edges_from([(list_of_nodes[i], list_of_nodes[i+1], expensive_stair[i]),
@@ -38,6 +38,20 @@ def graph_from_stair(expensive_stair):
 
 
 if __name__ == '__main__':
-    stairway = (5, 11, 43, 2, 23, 43, 22, 12, 6, 8)
+    stairway = (5, 11, 43, 2)# 23, 43, 22, 12, 6, 8)
     stairway_graph = graph_from_stair(stairway)
+    print(stairway_graph.edges)
     print(dijkstra_stair(stairway_graph))
+    stairway_2 = (5, 11, 43, 2)
+    graph_2 = nx.DiGraph()
+    graph_2.add_weighted_edges_from([
+        (0, 1, 5),
+        (0, 2, 11),
+        (1, 2, 11),
+        (1, 3, 43),
+        (2, 3, 43),
+        (2, 4, 2),
+        (3, 4, 2)
+    ])
+    print(graph_2.edges)
+    print(dijkstra_stair(graph_2))
